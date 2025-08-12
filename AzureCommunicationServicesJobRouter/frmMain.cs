@@ -925,6 +925,25 @@ namespace AzureCommunicationServicesJobRouter
                 }
             }
         }
+
+        private async void btnGetQueueStatistics_Click(object sender, EventArgs e)
+        {
+            List<string> queueIds = GetSelectedDataGridViewIds(dgQueues);
+
+            if (queueIds.Count > 0)
+            {
+                foreach (var queueId in queueIds)
+                {
+                    WriteTrace($"Getting queue '{queueId}' statistics...");
+
+                    var statisticsResult = await _routerClient.GetQueueStatisticsAsync(queueId);
+
+                    WriteTrace($"'{queueId}'" + " statistics: " + Environment.NewLine +
+                        $"{JsonConvert.SerializeObject(statisticsResult.Value, Formatting.None)}");
+                }
+            }
+
+        }
         #endregion
 
         #region Workers UI
@@ -1262,6 +1281,24 @@ namespace AzureCommunicationServicesJobRouter
             else
             {
                 MessageBox.Show("Please select a single job. Cannot update multiple jobs", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private async void btnGetJobQueuePosition_Click(object sender, EventArgs e)
+        {
+            List<string> jobIds = GetSelectedDataGridViewIds(dgJobs);
+
+            if (jobIds.Count > 0)
+            {
+                foreach (var jobId in jobIds)
+                {
+                    WriteTrace($"Getting job '{jobId}' position...");
+
+                    var queuePosition = await _routerClient.GetQueuePositionAsync(jobId);
+
+                    WriteTrace($"'{jobId}'" + " position: " + Environment.NewLine +
+                        $"{JsonConvert.SerializeObject(queuePosition.Value, Formatting.None)}");
+                }
             }
         }
 

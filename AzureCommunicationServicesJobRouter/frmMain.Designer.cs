@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             txtTrace = new TextBox();
             btnCreateDistPolicy = new Button();
             grpDistributionPolicies = new GroupBox();
@@ -50,6 +50,7 @@
             tabPage1 = new TabPage();
             tabPage5 = new TabPage();
             grpQueues = new GroupBox();
+            btnGetQueueStatistics = new Button();
             btnUpdateQueue = new Button();
             dgQueues = new DataGridView();
             idDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -115,6 +116,7 @@
             legendToolStripMenuItem = new ToolStripMenuItem();
             createTestingDataToolStripMenuItem = new ToolStripMenuItem();
             splitContainerMain = new SplitContainer();
+            btnGetJobQueuePosition = new Button();
             grpDistributionPolicies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgDistributionPolicies).BeginInit();
             ((System.ComponentModel.ISupportInitialize)distributionPolicyBindingBindingSource).BeginInit();
@@ -318,6 +320,7 @@
             // 
             // grpQueues
             // 
+            grpQueues.Controls.Add(btnGetQueueStatistics);
             grpQueues.Controls.Add(btnUpdateQueue);
             grpQueues.Controls.Add(dgQueues);
             grpQueues.Controls.Add(btnCreateQueue);
@@ -329,6 +332,16 @@
             grpQueues.TabIndex = 2;
             grpQueues.TabStop = false;
             grpQueues.Text = "Queues";
+            // 
+            // btnGetQueueStatistics
+            // 
+            btnGetQueueStatistics.Location = new Point(354, 435);
+            btnGetQueueStatistics.Name = "btnGetQueueStatistics";
+            btnGetQueueStatistics.Size = new Size(110, 23);
+            btnGetQueueStatistics.TabIndex = 4;
+            btnGetQueueStatistics.Text = "Get Statistics";
+            btnGetQueueStatistics.UseVisualStyleBackColor = true;
+            btnGetQueueStatistics.Click += btnGetQueueStatistics_Click;
             // 
             // btnUpdateQueue
             // 
@@ -664,6 +677,7 @@
             // 
             // grpJobs
             // 
+            grpJobs.Controls.Add(btnGetJobQueuePosition);
             grpJobs.Controls.Add(label1);
             grpJobs.Controls.Add(txtJobsSearchBox);
             grpJobs.Controls.Add(btnUpdateJob);
@@ -784,9 +798,9 @@
             // enqueueAtDataGridViewTextBoxColumn
             // 
             enqueueAtDataGridViewTextBoxColumn.DataPropertyName = "EnqueueAt";
-            dataGridViewCellStyle1.Format = "yyyy-MM-dd HH:mm";
-            dataGridViewCellStyle1.NullValue = null;
-            enqueueAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "yyyy-MM-dd HH:mm";
+            dataGridViewCellStyle3.NullValue = null;
+            enqueueAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             enqueueAtDataGridViewTextBoxColumn.HeaderText = "Enqueue UTC";
             enqueueAtDataGridViewTextBoxColumn.Name = "enqueueAtDataGridViewTextBoxColumn";
             enqueueAtDataGridViewTextBoxColumn.ReadOnly = true;
@@ -795,9 +809,9 @@
             // scheduleAtDataGridViewTextBoxColumn
             // 
             scheduleAtDataGridViewTextBoxColumn.DataPropertyName = "ScheduleAt";
-            dataGridViewCellStyle2.Format = "yyyy-MM-dd HH:mm";
-            dataGridViewCellStyle2.NullValue = null;
-            scheduleAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "yyyy-MM-dd HH:mm";
+            dataGridViewCellStyle4.NullValue = null;
+            scheduleAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             scheduleAtDataGridViewTextBoxColumn.HeaderText = "Schedule UTC";
             scheduleAtDataGridViewTextBoxColumn.Name = "scheduleAtDataGridViewTextBoxColumn";
             scheduleAtDataGridViewTextBoxColumn.ReadOnly = true;
@@ -957,6 +971,16 @@
             splitContainerMain.SplitterDistance = 498;
             splitContainerMain.TabIndex = 31;
             // 
+            // btnGetJobQueuePosition
+            // 
+            btnGetJobQueuePosition.Location = new Point(702, 435);
+            btnGetJobQueuePosition.Name = "btnGetJobQueuePosition";
+            btnGetJobQueuePosition.Size = new Size(120, 23);
+            btnGetJobQueuePosition.TabIndex = 9;
+            btnGetJobQueuePosition.Text = "Get Queue Position";
+            btnGetJobQueuePosition.UseVisualStyleBackColor = true;
+            btnGetJobQueuePosition.Click += btnGetJobQueuePosition_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1088,5 +1112,7 @@
         private TextBox txtWorkersSearchBox;
         private Label label2;
         private SplitContainer splitContainerMain;
+        private Button btnGetQueueStatistics;
+        private Button btnGetJobQueuePosition;
     }
 }

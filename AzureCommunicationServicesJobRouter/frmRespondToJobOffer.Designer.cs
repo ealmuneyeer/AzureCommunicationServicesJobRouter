@@ -155,14 +155,14 @@
             // 
             // colOfferedAt
             // 
-            colOfferedAt.HeaderText = "Offered at";
+            colOfferedAt.HeaderText = "Offered at UTC";
             colOfferedAt.Name = "colOfferedAt";
             colOfferedAt.ReadOnly = true;
             colOfferedAt.Width = 200;
             // 
             // colExpiresAt
             // 
-            colExpiresAt.HeaderText = "Expires at";
+            colExpiresAt.HeaderText = "Expires at UTC";
             colExpiresAt.Name = "colExpiresAt";
             colExpiresAt.ReadOnly = true;
             colExpiresAt.Width = 200;
