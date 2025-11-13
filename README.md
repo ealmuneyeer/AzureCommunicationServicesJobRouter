@@ -12,14 +12,19 @@ To run this tool, you need to have the following:
 ## Before You Run
 After downloading the project and building it using Visual Studio, you need to prepare your environment as follows:
 + Configure your Azure Communication Services resource events to send all Job Router-related events to the Azure Service Bus queue created in the prerequisites. For more information on setting up the events, refer to the [Subscribe to Azure Communication Services events](https://learn.microsoft.com/en-us/azure/communication-services/quickstarts/events/subscribe-to-events?pivots=platform-azp) documentation.
++ Register an Entra App application and grant it access to the Service Bus. This application will be used to fetch the notifications from the Service Bus queue. For more infomration about how to register an application and create a client secret you can check this document [Add and manage application credentials in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity-platform/how-to-add-credentials?tabs=client-secret)
 + Modify the `app.config` file inside your project with the following details:
     + `AcsConnectionString`: Your Azure Communication Services resource connection string.
-    + `ServiceBusConnectionString`: Your Azure Service Bus resource connection string.
     + `ServiceBusQueueName`: Your Azure Service Bus created queue name.
+    + `ServiceBusfullyQualifiedNamespace`: Your Service Bus fully qualified namespace (Host name). Usually it will be like <i>{Service_Bus_Namespace}.servicebus.windows.net</i>.
+    + `TenantId`: Your Azure tenant Id.
+    + `ServiceBusEntraIdClientId`: Registerd Entra App client Id.
+    + `ServiceBusEntraIdClientSecret`: Registered Entra App client secret.
 
  
 ## Notes
 + **This is an unofficial tool that you can use to test the Azure Communication Services Job Router. Use it at your own risk, as there are no guarantees that it is bug-free.**
++ Depending on your tenant security rules, you might need to make sure that the Event Grid is using the System Assigned or User Assigned Managed Identity to deliver the notifications. In this case, please makse sure that the Event Grid System Topic has sufficient permissions to access the Service Bus. You can select either `Azure Service Bus Data Owner` or `Azure Service Bus Data Sender`. You can find more infomration here [Use managed identities to deliver events in Azure Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/managed-service-identity)
 + The tool includes several shortcuts for your convenience. For example:
     + You can click on `Options` and then `Refresh` (`CTRL + R`) to manually refresh the lists.
     + You can click on `Options` and then `Legend` (`CTRL + L`) to display the legend window.
@@ -39,32 +44,13 @@ This tool will help you test the Azure Communication Services Job Router by prov
 + It helps you test moving components between different states, and provides descriptive error messages if you try to move between unsupported states.
 + You can easily create testing data by simply clicking on `Options` and then `Create Testing Data`.
 
-
-## Screenshots
-Below, you can find some screenshots of the tool:
-### Policies & Queues
-Here, you will be able to manage the Distribution Policies and Queues as follows:
-+ Distribution Policies: Create, update, and delete Distribution Policies.
-+ Queues: Create, update, and delete Queues.
-![image](https://github.com/user-attachments/assets/b7dce367-dee1-4369-8be3-6b180247876c)
-
-### Workers & Jobs
-Here, you will be able to manage the Workers and Jobs as follows
-+ Workers: Create, update, delete, respond to offers, register, and deregister workers.
-+ Jobs: Create, update, delete, cancel job, complete jobs, and close jobs.
-From the screenshot, you can notice the coloring scheme that helps identify the states of jobs and workers, as well as the events received from the Azure Service Bus
-![image](https://github.com/user-attachments/assets/1b015184-e5bc-47b7-b2ed-bb9e1da57467)
-
-### Legend
-You can open this window by navigating to Options and selecting Legend (CTRL + L). This will allow you to see the possible colors for each component
-
-![image](https://github.com/user-attachments/assets/793cc0f1-739c-4b46-973d-270d284744b2)
-
-### Describtive errors
-If you attempt to make an unsupported move in a component state, you will receive a descriptive error message, as shown below, which will help you understand the issue
-
-![image](https://github.com/user-attachments/assets/c79bf7e4-1d74-4a28-9b3a-7f07387700c8)
-
+## Breaking Changes
+<ul>
+  <li><b>Version 1.3 - Nov 2025:</b></li>
+ <ul>
+  <li><i>ServiceBusConnectionString</i> has been replaced with <i>ServiceBusfullyQualifiedNamespace</i>, <i>TenantId</i>, <i>ServiceBusEntraIdClientId</i> and <i>ServiceBusEntraIdClientSecret</i> so the authentication to the Service Bus is being handled by Entra App rather than connection string</li>   
+ </ul>
+</ul>
 
 ## Reporting Bugs and Suggesting Feature Requests
 If you encounter any bugs while using the tool or have any feature requests, please open a [new issue](https://github.com/ealmuneyeer/AzureCommunicationServicesJobRouter/issues/new) on GitHub.
