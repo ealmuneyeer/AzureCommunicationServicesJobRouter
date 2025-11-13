@@ -36,6 +36,11 @@ namespace AzureCommunicationServicesJobRouter
             return string.Join(';', parts);
         }
 
+        public static string MaskSecret(string secret)
+        {
+            return secret.Substring(0, 3) + "***";
+        }
+
         public static string GetApplicationVersion()
         {
             return System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString(3);

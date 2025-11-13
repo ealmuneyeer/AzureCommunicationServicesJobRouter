@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             txtTrace = new TextBox();
             btnCreateDistPolicy = new Button();
             grpDistributionPolicies = new GroupBox();
@@ -87,6 +87,7 @@
             btnDeleteWorker = new Button();
             tabPage3 = new TabPage();
             grpJobs = new GroupBox();
+            btnGetJobQueuePosition = new Button();
             label1 = new Label();
             txtJobsSearchBox = new TextBox();
             btnUpdateJob = new Button();
@@ -116,7 +117,6 @@
             legendToolStripMenuItem = new ToolStripMenuItem();
             createTestingDataToolStripMenuItem = new ToolStripMenuItem();
             splitContainerMain = new SplitContainer();
-            btnGetJobQueuePosition = new Button();
             grpDistributionPolicies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgDistributionPolicies).BeginInit();
             ((System.ComponentModel.ISupportInitialize)distributionPolicyBindingBindingSource).BeginInit();
@@ -695,6 +695,16 @@
             grpJobs.TabStop = false;
             grpJobs.Text = "Jobs";
             // 
+            // btnGetJobQueuePosition
+            // 
+            btnGetJobQueuePosition.Location = new Point(702, 435);
+            btnGetJobQueuePosition.Name = "btnGetJobQueuePosition";
+            btnGetJobQueuePosition.Size = new Size(120, 23);
+            btnGetJobQueuePosition.TabIndex = 9;
+            btnGetJobQueuePosition.Text = "Get Queue Position";
+            btnGetJobQueuePosition.UseVisualStyleBackColor = true;
+            btnGetJobQueuePosition.Click += btnGetJobQueuePosition_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -798,9 +808,9 @@
             // enqueueAtDataGridViewTextBoxColumn
             // 
             enqueueAtDataGridViewTextBoxColumn.DataPropertyName = "EnqueueAt";
-            dataGridViewCellStyle3.Format = "yyyy-MM-dd HH:mm";
-            dataGridViewCellStyle3.NullValue = null;
-            enqueueAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "yyyy-MM-dd HH:mm";
+            dataGridViewCellStyle1.NullValue = null;
+            enqueueAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             enqueueAtDataGridViewTextBoxColumn.HeaderText = "Enqueue UTC";
             enqueueAtDataGridViewTextBoxColumn.Name = "enqueueAtDataGridViewTextBoxColumn";
             enqueueAtDataGridViewTextBoxColumn.ReadOnly = true;
@@ -809,9 +819,9 @@
             // scheduleAtDataGridViewTextBoxColumn
             // 
             scheduleAtDataGridViewTextBoxColumn.DataPropertyName = "ScheduleAt";
-            dataGridViewCellStyle4.Format = "yyyy-MM-dd HH:mm";
-            dataGridViewCellStyle4.NullValue = null;
-            scheduleAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "yyyy-MM-dd HH:mm";
+            dataGridViewCellStyle2.NullValue = null;
+            scheduleAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             scheduleAtDataGridViewTextBoxColumn.HeaderText = "Schedule UTC";
             scheduleAtDataGridViewTextBoxColumn.Name = "scheduleAtDataGridViewTextBoxColumn";
             scheduleAtDataGridViewTextBoxColumn.ReadOnly = true;
@@ -970,16 +980,6 @@
             splitContainerMain.Size = new Size(1154, 687);
             splitContainerMain.SplitterDistance = 498;
             splitContainerMain.TabIndex = 31;
-            // 
-            // btnGetJobQueuePosition
-            // 
-            btnGetJobQueuePosition.Location = new Point(702, 435);
-            btnGetJobQueuePosition.Name = "btnGetJobQueuePosition";
-            btnGetJobQueuePosition.Size = new Size(120, 23);
-            btnGetJobQueuePosition.TabIndex = 9;
-            btnGetJobQueuePosition.Text = "Get Queue Position";
-            btnGetJobQueuePosition.UseVisualStyleBackColor = true;
-            btnGetJobQueuePosition.Click += btnGetJobQueuePosition_Click;
             // 
             // frmMain
             // 

@@ -105,20 +105,20 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 132);
+            label4.Location = new Point(24, 129);
             label4.Name = "label4";
-            label4.Size = new Size(138, 15);
+            label4.Size = new Size(128, 15);
             label4.TabIndex = 6;
-            label4.Text = "Min. concurrent policies:";
+            label4.Text = "Min. concurrent offers:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(10, 164);
+            label5.Location = new Point(22, 158);
             label5.Name = "label5";
-            label5.Size = new Size(140, 15);
+            label5.Size = new Size(130, 15);
             label5.TabIndex = 7;
-            label5.Text = "Max. concurrent policies:";
+            label5.Text = "Max. concurrent offers:";
             // 
             // label6
             // 
@@ -167,7 +167,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(108, 44);
+            label7.Location = new Point(110, 44);
             label7.Name = "label7";
             label7.Size = new Size(42, 15);
             label7.TabIndex = 13;

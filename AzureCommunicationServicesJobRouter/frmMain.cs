@@ -84,10 +84,13 @@ namespace AzureCommunicationServicesJobRouter
 
             WriteTrace($"AppSettings Config:\r\n" +
                 $"\t AcsConnectionString: {Helper.MaskConnectionString(_configWrapper.AcsConnectionString)}\r\n" +
-                $"\t ServiceBusConnectionString: {Helper.MaskConnectionString(_configWrapper.ServiceBusConnectionString)}\r\n" +
-                $"\t ServiceBusQueueName: {_configWrapper.ServiceBusQueueName}");
+                $"\t ServiceBusQueueName: {_configWrapper.ServiceBusQueueName}\r\n" +
+                $"\t ServiceBusfullyQualifiedNamespace: {_configWrapper.ServiceBusfullyQualifiedNamespace}\r\n" +
+                $"\t TenantId: {_configWrapper.TenantId}\r\n" +
+                $"\t ServiceBusEntraIdClientId: {_configWrapper.ServiceBusEntraIdClientId}\r\n" +
+                $"\t ServiceBusEntraIdSecret: {Helper.MaskSecret(_configWrapper.ServiceBusEntraIdClientSecret)}");
 
-            _serviceBusReceiverManager = new ServiceBusReceiverManager(_configWrapper.ServiceBusConnectionString, _configWrapper.ServiceBusQueueName);
+            _serviceBusReceiverManager = new ServiceBusReceiverManager(_configWrapper.ServiceBusQueueName, _configWrapper.ServiceBusfullyQualifiedNamespace, _configWrapper.TenantId, _configWrapper.ServiceBusEntraIdClientId, _configWrapper.ServiceBusEntraIdClientSecret);
             _serviceBusReceiverManager.ServiceBusEvent += HandleServiceBusEvent_Handler;
             _serviceBusReceiverManager.Start();
 
@@ -1055,7 +1058,7 @@ namespace AzureCommunicationServicesJobRouter
             {
                 foreach (var workerId in workerIds)
                 {
-                    DialogResult dialogResult = MessageBox.Show($"Are you sure you want to re-register worker with Id '{workerId}'?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show($"Are you sure you want to register worker with Id '{workerId}'?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dialogResult == DialogResult.Yes)
                     {

@@ -1,4 +1,6 @@
-﻿using Azure.Messaging.ServiceBus;
+﻿using Azure.Core;
+using Azure.Identity;
+using Azure.Messaging.ServiceBus;
 
 namespace ServiceBusReceiver
 {
@@ -10,16 +12,22 @@ namespace ServiceBusReceiver
         // the processor that reads and processes messages from the queue
         private ServiceBusProcessor _serviceBusProcessor;
 
-        private string _connectionString;
         private string _queueName;
+        private string _fullyQualifiedNamespace;
+        private string _entraIdClientId;
+        private string _entraIdClientSecret;
+        private string _tenantId;
 
         public event EventHandler<ServiceBusEventArgs> ServiceBusEvent;
 
 
-        public ServiceBusReceiverManager(string serviceBusConnectionSring, string queueName)
+        public ServiceBusReceiverManager(string queueName, string fullyQualifiedNamespace, string tenantId, string entraIdClientId, string entraIdClientSecret)
         {
-            _connectionString = serviceBusConnectionSring;
             _queueName = queueName;
+            _fullyQualifiedNamespace = fullyQualifiedNamespace;
+            _entraIdClientId = entraIdClientId;
+            _entraIdClientSecret = entraIdClientSecret;
+            _tenantId = tenantId;
         }
 
         // handle received messages
@@ -54,7 +62,10 @@ namespace ServiceBusReceiver
             {
                 TransportType = ServiceBusTransportType.AmqpWebSockets
             };
-            _serviceBusClient = new ServiceBusClient(_connectionString, clientOptions);
+
+            TokenCredential credential = new ClientSecretCredential(_tenantId, _entraIdClientId, _entraIdClientSecret);
+
+            _serviceBusClient = new ServiceBusClient(_fullyQualifiedNamespace, credential, clientOptions);
 
             // create a processor that we can use to process the messages
             _serviceBusProcessor = _serviceBusClient.CreateProcessor(_queueName, new ServiceBusProcessorOptions());
