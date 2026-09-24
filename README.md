@@ -1,3 +1,6 @@
+>[!CAUTION]
+>Azure Communication Services is introducing breaking changes, and some services are being retired. Learn more in the [retirement and breaking changes guide](https://aka.ms/acs-retirement).
+
 # Azure Communication Services Job Router Visualization Tool
 This is an unofficial tool to test the [Azure Communication Services Job Router](https://learn.microsoft.com/en-us/azure/communication-services/concepts/router/concepts). It will help you visualize the job router compoents, including distribution policieis, queues, workers, and jobs.
 
